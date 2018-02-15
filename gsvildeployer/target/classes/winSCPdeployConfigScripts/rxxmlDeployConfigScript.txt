@@ -1,0 +1,25 @@
+# Connect
+open sftp://ee000@sgsvrasgens03lx.sistemi.group -privatekey=D:\eclipse\Workspaces\gsvildeployer\src\main\resources\id_rsa_private.ppk -passphrase=mavelot8 -rawsettings Tunnel=1 TunnelHostName=sgsvrsggtw001lx.servizi TunnelUserName=sedi-direzioni\gs01491 TunnelPasswordPlain="mavelot25"
+
+# Change local directory
+lcd "C:\Workspaces\workspaceEE000\SiCheckImage.Batch.XmlFileTransferEngine.ReceiveXml.Bin\rxxml\RTC-Config\SVIL\conf"
+
+# Change remote directory
+cd "/app/EE000/rxxml/conf/"
+
+# Remove all files previously deployed
+rm *.properties
+rm *.txt
+
+# Force binary mode transfer
+option transfer binary
+
+# Upload files to current working directory
+put "*.properties" "/app/EE000/rxxml/conf/"
+put "*.txt" "/app/EE000/rxxml/conf/"
+
+# Disconnect
+close
+
+# Exit WinSCP
+exit

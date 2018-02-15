@@ -1,0 +1,23 @@
+# Connect
+open sftp://ee000@sgsvrasgens03lx.sistemi.group -privatekey=D:\eclipse\Workspaces\gsvildeployer\src\main\resources\id_rsa_private.ppk -passphrase=mavelot8 -rawsettings Tunnel=1 TunnelHostName=sgsvrsggtw001lx.servizi TunnelUserName=sedi-direzioni\gs01491 TunnelPasswordPlain="mavelot25"
+
+# Change local directory
+lcd "C:\Workspaces\workspaceEE000\SiCheckImage.Batch.ImmaginiLR.Bin\immlr\sw\lib"
+
+# Change remote directory
+cd "/app/EE000/immlr/sw/lib/"
+
+# Remove all *.jar file previously deployed
+rm *.jar
+
+# Force binary mode transfer
+option transfer binary
+
+# Upload files to current working directory
+put "*.jar" "/app/EE000/immlr/sw/lib/"
+
+# Disconnect
+close
+
+# Exit WinSCP
+exit
