@@ -1,49 +1,47 @@
 package com.sgsbpm.gsvildeployer.controller;
 
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.BATCH_COMPILE_DEPLOY_REGISTER;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.CONFIG_FILENAME;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPIF;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.BATCH_COMPILE_DEPLOY_REGISTER;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPIF_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML_ANT_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.MISSING_INFO;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.WINSCP_COMMAND;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPIF_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM_DEPLOY_JAR_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML_DEPLOY_JAR_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPIF_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPIF_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVR_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.DSPVS_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.FDIGI_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.IMMLR_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.INDOC_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.RXXML_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM_DEPLOY_CONFIG_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.SVIMM_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML_ANT_SCRIPT;
 import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML_DEPLOY_CONFIG_SCRIPT;
-import static com.sgsbpm.gsvildeployer.utils.Utils.wrapNoteMessages;
-import static com.sgsbpm.gsvildeployer.utils.Utils.updatePropertiesInFile;
-
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.TXXML_DEPLOY_JAR_SCRIPT;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.WINSCP_COMMAND;
+import static com.sgsbpm.gsvildeployer.utils.CommonConstants.MISSING_INFO;
 import static com.sgsbpm.gsvildeployer.utils.Utils.getPropertiesFromFile;
+import static com.sgsbpm.gsvildeployer.utils.Utils.updatePropertiesInFile;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,6 +70,11 @@ import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
 
+import com.sgsbpm.gsvildeployer.beans.AbstractTableBean;
+import com.sgsbpm.gsvildeployer.beans.CompileTableBean;
+import com.sgsbpm.gsvildeployer.beans.DeployConfigTableBean;
+import com.sgsbpm.gsvildeployer.beans.DeployJarTableBean;
+import com.sgsbpm.gsvildeployer.beans.DeployResult;
 import com.sgsbpm.gsvildeployer.beans.TableBean;
 import com.sgsbpm.gsvildeployer.model.Model;
 import com.sgsbpm.gsvildeployer.view.View;
@@ -82,12 +85,12 @@ import com.sgsbpm.gsvildeployer.view.View;
  */
 public class Controller implements ActionListener 
 {
-	private Model model 								= null;
-	private View view   								= null;
+	private Model model 				= null;
+	private View view   				= null;
 	
-	private final String JAVA_TEMP_DIR 					= System.getProperty("java.io.tmpdir");
-	private Properties configProperties 				= new Properties();
-	private String winscp_log 							= "";
+	private final String JAVA_TEMP_DIR 	= System.getProperty("java.io.tmpdir");
+	private Properties configProperties = new Properties();
+	private String winscp_log 			= "";
 	
 	public Controller(Model model, View view) 
 	{
@@ -157,8 +160,8 @@ public class Controller implements ActionListener
 		/**
 		 * 2. DEPLOY
 		 */
-		tableBeansList = doDeploy(selectedBatchList, deployJarFiles);
 		List<TableBean> tableBeansListInstalled = new ArrayList<TableBean>();
+		tableBeansList = doDeploy(selectedBatchList, deployJarFiles);
 		for (TableBean tBean : tableBeansList)
 		{
 			if (tBean.isInstallProcessOk())
@@ -167,7 +170,7 @@ public class Controller implements ActionListener
 			}
 			else
 			{
-				this.model.setNotesMessage(tBean.getInstallErrorMessage());
+				this.model.setNotesMessage(tBean.getNotesMessage());
 			}
 		}
 		if (!tableBeansListInstalled.isEmpty())
@@ -218,14 +221,14 @@ public class Controller implements ActionListener
 		return selectedBatchList;
 	}
 	
-	private List<TableBean> doCompile(List<String> selectedBatchList)
+	private List<CompileTableBean> doCompile(List<String> selectedBatchList)
 	{
-		List<TableBean> tableBeansList = new ArrayList<TableBean>();
+		List<CompileTableBean> tableBeansList = new ArrayList<CompileTableBean>();
 		if (!selectedBatchList.isEmpty())
 		{
 			File buildFile 				= null;
 			String compileResult		= null;
-			TableBean newRow			= null;
+			CompileTableBean newRow		= null;
 			for (String batch : selectedBatchList)
 			{
 				switch (batch) 
@@ -269,8 +272,9 @@ public class Controller implements ActionListener
 				default:
 					break;
 				}
+				
 				compileResult = executeAntScript(buildFile);
-				newRow = new TableBean(batch, compileResult, MISSING_INFO, MISSING_INFO, new Timestamp(System.currentTimeMillis()).toString(), MISSING_INFO, MISSING_INFO);
+				newRow = new CompileTableBean(batch, compileResult, new Timestamp(System.currentTimeMillis()).toString());
 				newRow.setToDisplayInNoteSection(true);
 				tableBeansList.add(newRow);
 				updateLastCompileTimestamp(batch, newRow);
@@ -285,12 +289,12 @@ public class Controller implements ActionListener
 	 * @param deployJarFiles
 	 * @return
 	 */
-	private List<TableBean> doDeploy(List<String> selectedBatchList, boolean deployJarFiles)
+	private List<AbstractTableBean> doDeploy(List<String> selectedBatchList, boolean deployJarFiles)
 	{
-		List<TableBean> tableBeansList = new ArrayList<TableBean>();
+		List<AbstractTableBean> tableBeansList = new ArrayList<AbstractTableBean>();
 		if (!selectedBatchList.isEmpty())
 		{
-			TableBean newRow				= null;
+			AbstractTableBean newRow		= null;
 			String commandAndArguments[] 	= new String[2];
 			commandAndArguments[0] 			= configProperties.getProperty(WINSCP_COMMAND);
 			for (String batch : selectedBatchList)
@@ -336,13 +340,11 @@ public class Controller implements ActionListener
 				default:
 					break;
 				}
-				newRow = executeWinScpScript(batch, commandAndArguments);
-				if (newRow != null)
-				{
-					newRow.setToDisplayInNoteSection(true);
-					tableBeansList.add(newRow);
-					updateLastDeployTimestamp(batch, newRow);
-				}
+				
+				newRow = executeWinScpScript(batch, commandAndArguments, deployJarFiles);
+				newRow.setToDisplayInNoteSection(true);
+				tableBeansList.add(newRow);
+				updateLastDeployTimestamp(batch, newRow);
 			}
 		}
 		return tableBeansList;
@@ -354,12 +356,14 @@ public class Controller implements ActionListener
 	 * @param commandAndArguments
 	 * @return a new {@link TableBean} if the installation was successful, {@code null} otherwise
 	 */
-	private TableBean executeWinScpScript(String batch, String[] commandAndArguments)
+	private AbstractTableBean executeWinScpScript(String batch, String[] commandAndArguments, boolean deployJarFiles)
 	{
-		int winScpExitValue 		= 0;
-		TableBean result 			= null;
-		final String INSTALL_OK 	= "...installation process completed successfully";
-		final String INSTALL_KO 	= "...installation process finished with errors, some Jar's have not been completely transferred, check the logs for more details...";	
+		int winScpExitValue 			= 0;
+		AbstractTableBean result 		= null;
+//		final String INSTALL_JAR_OK 	= "...jar's installation process completed successfully!";
+//		final String INSTALL_JAR_KO 	= "...jar's installation process finished with errors, some elements have not been completely transferred, check the logs for more details...";	
+//		final String INSTALL_CONFIG_OK 	= "...config installation process completed successfully!";
+//		final String INSTALL_CONFIG_KO 	= "...config installation process finished with errors, some elements have not been completely transferred, check the logs for more details...";
 		try
 		{            
 			Process proc = Runtime.getRuntime().exec(commandAndArguments);
@@ -386,23 +390,41 @@ public class Controller implements ActionListener
 			DeployResult deployResult = checkDeploy();
 			if (deployResult.isCompleted())
 			{
-				if (isDeployCorrect(batch))
+				if (isDeployCorrect(batch, deployJarFiles))
 				{
-					result = new TableBean(batch, MISSING_INFO, wrapNoteMessages(INSTALL_OK, false), MISSING_INFO, MISSING_INFO, new Timestamp(System.currentTimeMillis()).toString(), MISSING_INFO);
+					if (deployJarFiles)
+					{
+						result = new DeployJarTableBean(batch, true, new Timestamp(System.currentTimeMillis()).toString());
+					}
+					else
+					{
+						result = new DeployConfigTableBean(batch, true, new Timestamp(System.currentTimeMillis()).toString());
+					}
 				}
 				else
 				{
-					this.model.setNotesMessage(wrapNoteMessages(INSTALL_KO, true));
+					if (deployJarFiles)
+					{
+						result = new DeployJarTableBean(batch, false, MISSING_INFO);
+					}
+					else
+					{
+						result = new DeployConfigTableBean(batch, false, MISSING_INFO);
+					}
+//					this.model.setNotesMessage(wrapNoteMessages(INSTALL_JAR_KO, true));
 				}
 			}
 			else
 			{
-				this.model.setNotesMessage(deployResult.getMessage());
+				result = new TableBean(batch, MISSING_INFO, deployResult.getMessage(), deployResult.getMessage(), MISSING_INFO, MISSING_INFO, MISSING_INFO);
+//				this.model.setNotesMessage(deployResult.getMessage());
 			}
 		}
 		else
 		{
-			this.model.setNotesMessage(wrapNoteMessages("Error executing WinSCP\nCommand in error is: " + commandAndArguments[0] + " " + commandAndArguments[1] + " return code is: " + winScpExitValue, true));
+			final String MESSAGE = wrapNoteMessages("Error executing WinSCP\nCommand in error is: " + commandAndArguments[0] + " " + commandAndArguments[1] + " return code is: " + winScpExitValue, true);
+			result = new TableBean(batch, MISSING_INFO, MESSAGE, MESSAGE, MISSING_INFO, MISSING_INFO, MISSING_INFO);
+//			this.model.setNotesMessage(wrapNoteMessages("Error executing WinSCP\nCommand in error is: " + commandAndArguments[0] + " " + commandAndArguments[1] + " return code is: " + winScpExitValue, true));
 		}
 		return result;
 	}
@@ -482,25 +504,37 @@ public class Controller implements ActionListener
 		return antBuildResult;
 	}
 	
-	private void updateLastCompileTimestamp(final String BATCH, TableBean tableBean)
+	private void updateLastCompileTimestamp(final String BATCH, CompileTableBean tableBean)
 	{
 		final String LAST_COMPILE_TIMESTAMP = BATCH.concat("_LAST_COMPILE_TIMESTAMP");
 		final String LAST_COMPILE_RESULT 	= BATCH.concat("_LAST_COMPILE_RESULT");
 		Map<String, String> propertiesMap 	= new HashMap<String, String>();
 		
 		propertiesMap.put(LAST_COMPILE_TIMESTAMP, tableBean.getLastCompileTimestamp());
-		propertiesMap.put(LAST_COMPILE_RESULT, tableBean.getCompileResult());
+		propertiesMap.put(LAST_COMPILE_RESULT, tableBean.getNotesMessage());
 		updatePropertiesInFile(JAVA_TEMP_DIR + BATCH_COMPILE_DEPLOY_REGISTER, propertiesMap);
 	}
 	
-	private void updateLastDeployTimestamp(final String BATCH, TableBean tableBean)
+	private void updateLastDeployTimestamp(final String BATCH, AbstractTableBean tableBean)
 	{
-		final String LAST_DEPLOY_TIMESTAMP 	= BATCH.concat("_LAST_DEPLOY_TIMESTAMP");
-		final String LAST_DEPLOY_RESULT 	= BATCH.concat("_LAST_DEPLOY_RESULT");
+		final String LAST_JAR_DEPLOY_TIMESTAMP 		= BATCH.concat("_LAST_JAR_DEPLOY_TIMESTAMP");
+		final String LAST_CONFIG_DEPLOY_TIMESTAMP 	= BATCH.concat("_LAST_CONFIG_DEPLOY_TIMESTAMP");
+		final String LAST_JAR_DEPLOY_RESULT 		= BATCH.concat("_LAST_JAR_DEPLOY_RESULT");
+		final String LAST_CONFIG_DEPLOY_RESULT 		= BATCH.concat("_LAST_CONFIG_DEPLOY_RESULT");
 		Map<String, String> propertiesMap 	= new HashMap<String, String>();
 		
-		propertiesMap.put(LAST_DEPLOY_TIMESTAMP, tableBean.getLastDeployJarTimestamp());
-		propertiesMap.put(LAST_DEPLOY_RESULT, tableBean.getDeployJarResult());
+		if (tableBean instanceof DeployJarTableBean)
+		{
+			DeployJarTableBean djtb = (DeployJarTableBean) tableBean;
+			propertiesMap.put(LAST_JAR_DEPLOY_RESULT, djtb.getNotesMessage());
+			propertiesMap.put(LAST_JAR_DEPLOY_TIMESTAMP, djtb.getLastDeployJarTimestamp());
+		}
+		else if (tableBean instanceof DeployConfigTableBean)
+		{
+			DeployConfigTableBean dctb = (DeployConfigTableBean) tableBean;
+			propertiesMap.put(LAST_CONFIG_DEPLOY_RESULT, dctb.getNotesMessage());
+			propertiesMap.put(LAST_CONFIG_DEPLOY_TIMESTAMP, dctb.getLastDeployConfigTimestamp());
+		}
 		updatePropertiesInFile(JAVA_TEMP_DIR + BATCH_COMPILE_DEPLOY_REGISTER, propertiesMap);
 	}
 	
@@ -548,17 +582,17 @@ public class Controller implements ActionListener
 		return new DeployResult(false, "Connection error.\nUnable to connect to the ee000 svil server in " + NUM_RETRY + " retries each " + (MILLISEC_TO_WAIT / 1000) + " seconds");
 	}
 	
-	private boolean isDeployCorrect(final String BATCH_NAME)
+	private boolean isDeployCorrect(final String BATCH_NAME, boolean deployJarFiles)
 	{
-		final String BATCH_LIB_DIR = configProperties.getProperty(BATCH_NAME.toUpperCase().concat("_LIB_DIR"));
-		if (BATCH_LIB_DIR != null)
+		final String BATCH_ITEM_DIR = deployJarFiles ? configProperties.getProperty(BATCH_NAME.toUpperCase().concat("_LIB_DIR")) : configProperties.getProperty(BATCH_NAME.toUpperCase().concat("_CONFIG_DIR"));
+		if (BATCH_ITEM_DIR != null)
 		{
-			File dir = new File(BATCH_LIB_DIR);
+			File dir = new File(BATCH_ITEM_DIR);
 			if (dir.isDirectory())
 			{
-				for (File jar : dir.listFiles())
+				for (File item : dir.listFiles())
 				{
-					if (!winscp_log.contains("Transfer done: " + StringUtils.wrap(jar.getName(), "'"))) 
+					if (!winscp_log.contains("Transfer done: " + StringUtils.wrap(item.getName(), "'"))) 
 					{
 						return false;
 					}
